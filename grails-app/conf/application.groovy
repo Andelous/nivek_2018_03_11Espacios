@@ -5,10 +5,10 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.nivek.sms.Usu
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.nivek.sms.UsuarioRol'
 grails.plugin.springsecurity.authority.className = 'com.nivek.sms.Rol'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	[pattern: '/',               access: ['permitAll']],
+	[pattern: '/',               access: ['IS_AUTHENTICATED_FULLY']],
 	[pattern: '/error',          access: ['permitAll']],
-	[pattern: '/index',          access: ['permitAll']],
-	[pattern: '/index.gsp',      access: ['permitAll']],
+	[pattern: '/index',          access: ['IS_AUTHENTICATED_FULLY']],
+	[pattern: '/index.gsp',      access: ['IS_AUTHENTICATED_FULLY']],
 	[pattern: '/shutdown',       access: ['permitAll']],
 	[pattern: '/assets/**',      access: ['permitAll']],
 	[pattern: '/**/js/**',       access: ['permitAll']],
@@ -25,4 +25,3 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/favicon.ico', filters: 'none'],
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
-
