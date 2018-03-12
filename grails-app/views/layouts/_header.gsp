@@ -57,7 +57,7 @@
                 <a href="#" class="btn btn-sm btn-info">
                     Bienvenido, <strong>Administrador</strong>
                 </a>
-                <a href="#" class="btn btn-outline-danger btn-sm">Cerrar sesi&oacute;n</a>
+                <a href="${request.contextPath}/logoff" class="btn btn-outline-danger btn-sm">Cerrar sesi&oacute;n</a>
             </div>
         </div>
         <!--</div>-->
