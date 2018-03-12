@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: nivek_2018_03_11espacios
+        defaultPackage: com.nivek.sms
     spring:
         transactionManagement:
             proxies: false
@@ -94,23 +94,23 @@ hibernate:
 dataSource:
     pooled: true
     jmxExport: true
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
+    driverClassName: org.postgresq.Driver
+    username: 'admin'
+    password: 'admin'
 
 environments:
     development:
         dataSource:
             dbCreate: create-drop
-            url: jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:postgresql://localhost:5432/db_espacios
     test:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:postgresql://localhost:5432/db_espacios
     production:
         dataSource:
-            dbCreate: none
-            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            dbCreate: update
+            url: jdbc:postgresql://localhost:5432/db_espacios
             properties:
                 jmxEnabled: true
                 initialSize: 5
@@ -129,3 +129,7 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
+
+server:
+    port: 767
+    contextPath: '/Nivek_SMS'

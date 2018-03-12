@@ -30,6 +30,7 @@ repositories {
 }
 
 dependencies {
+    compile 'org.grails.plugins:spring-security-core:3.2.1'
     compile "org.postgresql:postgresql:42.2.1"
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
