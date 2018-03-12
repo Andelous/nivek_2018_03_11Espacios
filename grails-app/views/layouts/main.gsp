@@ -18,7 +18,7 @@
     </head>
 
 <body>
-    <g:render template="layouts/header" />
+    <g:render template="/layouts/header" />
 
     <br />
 
@@ -29,7 +29,7 @@
     <br />
     <br />
 
-    <g:render template="layouts/footer" />
+    <g:render template="/layouts/footer" />
     <asset:javascript src="application.js" />
 </body>
 
