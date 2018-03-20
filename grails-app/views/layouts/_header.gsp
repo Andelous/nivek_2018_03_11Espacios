@@ -16,9 +16,9 @@
         <div class="collapse navbar-collapse" id="navbarCabecera">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="# ">
+                    <g:link controller="usuarios" class="nav-link">
                         <span class="oi oi-people"></span> Usuarios
-                    </a>
+                    </g:link>
                 </li>
 
                 <li class="nav-item">

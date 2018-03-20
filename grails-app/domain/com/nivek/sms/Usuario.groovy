@@ -8,6 +8,8 @@ import grails.compiler.GrailsCompileStatic
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
 class Usuario implements Serializable {
+    Persona persona
+    Institucion institucion
 
     private static final long serialVersionUID = 1
 
@@ -25,9 +27,12 @@ class Usuario implements Serializable {
     static constraints = {
         password nullable: false, blank: false, password: true
         username nullable: false, blank: false, unique: true
+        institucion nullable: true
     }
 
     static mapping = {
-	    password column: '`password`'
+        id generator: 'increment'
+        password column: '`password`'
+        version false
     }
 }
