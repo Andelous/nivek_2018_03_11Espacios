@@ -20,4 +20,21 @@ class Rol implements Serializable {
 	static mapping = {
 		cache true
 	}
+
+    String toString() {
+        switch(authority) {
+            case "ROLE_ADMINISTRADOR_GENERAL":
+                return "Administrador general"
+            case "ROLE_ADMINISTRADOR_INSTITUCION":
+                return "Administrador de institución"
+            case "ROLE_ENCARGADO_ESPACIOS":
+                return "Encargado de espacios"
+            case "ROLE_BENEFICIARIO_INSTITUCION":
+                return "Beneficiario de institución"
+            case "ROLE_VISOR_INSTITUCION":
+                return "Visor de institución"
+            default:
+                return "Desconocido"
+        }
+    }
 }
