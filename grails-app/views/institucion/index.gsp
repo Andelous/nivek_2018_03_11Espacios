@@ -103,6 +103,47 @@
         </table>
 
 
+        <g:each in="${institucionesLista}" var="institucion">
+            <div class="modal fade" id="modal${institucion.id}" tabindex="-1"
+                role="dialog" aria-labelledby="tituloModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tituloModal">
+                                <strong>Advertencia</strong>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body text-center bg-danger text-white">
+                            ¿Est&aacute; seguro que desea eliminar el usuario
+                            ${institucion.nombre}?
+                            <br />
+                            <br />
+                            <strong>Estas acciones no pueden revertirse.</strong>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">Cancelar</button>
+
+                            <g:link action="eliminar" controller="institucion"
+                                params="['institucion.id': institucion.id]"
+                                class="btn btn-danger">
+                                Eliminar
+                            </g:link>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </g:each>
+
+
        
     </body>
 </html>

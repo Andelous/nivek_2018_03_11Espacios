@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <title>Modificar usuario</title>
+        <title>Modificar Institucion</title>
     </head>
     <body>
         <div class="row">
@@ -11,24 +11,24 @@
 
                 <h4 class="text-center">
                     <span class="oi oi-person"></span>&nbsp;
-                     Modificar usuario
+                     Modificar Institucion
                 </h4>
                 <small class="text-muted d-block text-center">
-                    <strong>${usuario.username}</strong> - ${usuario.persona}
+                    <strong>${institucion?.nombre}</strong> - ${institucion?.nombre}
                 </small>
 
                 <hr />
 
 
-                <g:render template="/compartido/errores/erroresUsuario" model="[usuario: usuario, rol: rol]"/>
+                <g:render template="/compartido/errores/erroresInstitucion" model="[institucion: institucion]"/>
 
 
-                <g:form controller="usuarios" action="editar" method="PUT"
+                <g:form controller="institucion" action="editar" method="PUT"
                     name="formulario">
 
-                    <input type="hidden" name="usuario.id" value="${usuario?.id}">
+                    <input type="hidden" name="institucion.id" value="${institucion?.id}">
 
-                    <g:render template="/compartido/formularios/formularioUsuario" model="[usuario: usuario, rol: rol]"/>
+                    <g:render template="/compartido/formularios/formularioInstitucion" model="[institucion: institucion]"/>
 
                     <input type="submit" name="Actualizar" value="Actualizar"
                         class="btn btn-primary btn-block">

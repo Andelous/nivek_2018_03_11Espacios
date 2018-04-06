@@ -2,7 +2,7 @@
     <label>Nombre</label>
     <input type="text" class="form-control form-control-sm"
      placeholder="Nombre" name="institucion.nombre"
-     required value="${institucion?.nombre}" />
+     required value="${institucion?.nombre}"/>
 </div>
 
 

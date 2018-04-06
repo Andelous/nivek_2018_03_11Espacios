@@ -59,9 +59,7 @@ class InstitucionController {
         ]
     }
 
-    def show(Long id) {
-        respond institucionService.get(id)
-    }
+    
     @Transactional
     def crear(Institucion institucion) {
  
@@ -77,50 +75,36 @@ class InstitucionController {
     }
 
     
+    @Transactional
+    def editar(Institucion institucion) {
+     
 
-    def edit(Long id) {
-        respond institucionService.get(id)
-    }
+        if (request.method == "PUT") {
+            
+                 if (institucion.save()) {
+            
 
-    def update(Institucion institucion) {
-        if (institucion == null) {
-            notFound()
-            return
-        }
-
-        try {
-            institucionService.save(institucion)
-        } catch (ValidationException e) {
-            respond institucion.errors, view:'edit'
-            return
-        }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'institucion.label', default: 'Institucion'), institucion.id])
-                redirect institucion
+                redirect(action: "index", controller: "institucion", params: [actualizado: 1])
             }
-            '*'{ respond institucion, [status: OK] }
         }
+
+         [
+            institucion: institucion,
+            
+        ]
+
+        }
+    
+
+   
+
+     @Transactional
+    def eliminar(Institucion institucion) {
+      
+        institucion.delete()
+
+        redirect(action: "index", controller: "institucion", params: [eliminado: 1])
     }
-
-    def delete(Long id) {
-        if (id == null) {
-            notFound()
-            return
-        }
-
-        institucionService.delete(id)
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'institucion.label', default: 'Institucion'), id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
     protected void notFound() {
         request.withFormat {
             form multipartForm {
