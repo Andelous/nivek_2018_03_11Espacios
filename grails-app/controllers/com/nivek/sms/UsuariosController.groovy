@@ -67,8 +67,10 @@ class UsuariosController {
                 usuario.institucion = null
             }
 
-            if (params.usuario.password == params.usuario.passwordC &&
-                usuario.save()) {
+            if (
+                params.usuario.password == params.usuario.passwordC &&
+                usuario.save()
+            ) {
                 UsuarioRol.create usuario, rol
 
                 redirect(action: "index", controller: "usuarios", params: [creado: 1])

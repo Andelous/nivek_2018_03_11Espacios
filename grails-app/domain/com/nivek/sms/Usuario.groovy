@@ -11,6 +11,8 @@ class Usuario implements Serializable {
     Persona persona
     Institucion institucion
 
+    static hasMany = [solicitudes: Solicitud]
+
     private static final long serialVersionUID = 1
 
     String username
