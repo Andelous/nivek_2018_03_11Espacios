@@ -19,7 +19,7 @@
 <div class="form-group">
     <label>Activo</label>
     <input type="text" class="form-control form-control-sm"
-     placeholder="" name="institucion.activo"
-     required value="${institucion?.activo}" />
+     placeholder="" name="institucion.activa"
+     required value="${institucion?.activa}" />
 </div>
 
