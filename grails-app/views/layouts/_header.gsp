@@ -22,9 +22,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="# ">
-                        <span class="oi oi-briefcase"></span> Instituciones
-                    </a>
+                    <g:link controller="institucion" class="nav-link">
+                        <span class="oi oi-people"></span> Instituciones
+                    </g:link>
                 </li>
 
                 <li class="nav-item">

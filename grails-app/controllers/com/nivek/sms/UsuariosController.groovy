@@ -58,6 +58,7 @@ class UsuariosController {
 
     @Transactional
     def crear(Usuario usuario, Rol rol) {
+
         flash.institucionesLista = Institucion.list()
         flash.rolesLista = Rol.list()
 
@@ -66,10 +67,8 @@ class UsuariosController {
                 usuario.institucion = null
             }
 
-            if (
-                params.usuario.password == params.usuario.passwordC &&
-                usuario.save()
-            ) {
+            if (params.usuario.password == params.usuario.passwordC &&
+                usuario.save()) {
                 UsuarioRol.create usuario, rol
 
                 redirect(action: "index", controller: "usuarios", params: [creado: 1])

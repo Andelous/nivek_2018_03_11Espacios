@@ -30,7 +30,7 @@ class BootStrap {
             new Rol(authority: "ROLE_VISOR_INSTITUCION").save()
 
         // Instituciones de prueba...
-        def iKarimnot = new Institucion(nombre: "Karimnot", direccion: "Calle Col. Reforma", activa: true).save()
+        def iKarimnot = new Institucion(nombre: "Karimnot", direccion: "Calle Col. Reforma", activa: false).save()
         def iLaSalle = new Institucion(nombre: "Universidad LaSalle Oaxaca", direccion: "Calle a San Agustín", activa: true).save()
         def iMacroscorp = new Institucion(nombre: "Macroscorp", direccion: "Calle Moctezuma", activa: true).save()
         def iNivek = new Institucion(nombre: "Nivek Software Solutions", direccion: "Edificio G, Salón 7", activa: true).save()
