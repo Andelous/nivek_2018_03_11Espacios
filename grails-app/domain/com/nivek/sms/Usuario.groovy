@@ -11,7 +11,8 @@ class Usuario implements Serializable {
     Persona persona
     Institucion institucion
 
-    static hasMany = [solicitudes: Solicitud]
+    static hasMany = [solicitudes: Solicitud, espacios: Espacio]
+    static belongsTo = Espacio
 
     private static final long serialVersionUID = 1
 

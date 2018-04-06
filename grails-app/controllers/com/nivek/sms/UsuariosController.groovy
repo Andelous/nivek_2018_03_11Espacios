@@ -4,10 +4,12 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.web.servlet.ModelAndView
+import grails.plugin.springsecurity.SpringSecurityService
 
-@Secured("IS_AUTHENTICATED_FULLY")
+@Secured(["ROLE_ADMINISTRADOR_GENERAL", "ROLE_ADMINISTRADOR_INSTITUCION"])
 @Transactional(readOnly = false)
 class UsuariosController {
+    def springSecurityService
 
     static allowedMethods = [
         index: "GET",

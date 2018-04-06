@@ -19,6 +19,8 @@ class Rol implements Serializable {
 
 	static mapping = {
 		cache true
+        id generator: 'increment'
+        version false
 	}
 
     String toString() {
