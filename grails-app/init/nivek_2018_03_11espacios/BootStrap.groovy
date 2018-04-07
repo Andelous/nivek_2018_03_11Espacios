@@ -32,7 +32,9 @@ class BootStrap {
             rolVisorInstitucion = new Rol(authority: Rol.VISOR_INSTITUCION).save()
 
         System.out.println(rolVisorInstitucion)
+        System.out.println()
 
+        // Usuario raíz
         if (!Usuario.find { username == "root" }) {
             def personaAdministradorGeneral =
                 new Persona(
@@ -48,6 +50,28 @@ class BootStrap {
 
             UsuarioRol.create usuarioAdministradorGeneral, rolAdministradorGeneral
         }
+
+        // Estados de solicitudes
+
+        def estadoAprobada = SolicitudEstado.find { nombre == SolicitudEstado.APROBADA }
+        if (!estadoAprobada)
+            estadoAprobada = new SolicitudEstado(nombre: SolicitudEstado.APROBADA).save()
+
+        def estadoEnRevision = SolicitudEstado.find { nombre == SolicitudEstado.EN_REVISION }
+        if (!estadoEnRevision)
+            estadoEnRevision = new SolicitudEstado(nombre: SolicitudEstado.EN_REVISION).save()
+
+        def estadoRechazadaEncargado = SolicitudEstado.find { nombre == SolicitudEstado.RECHAZADA_ENCARGADO }
+        if (!estadoRechazadaEncargado)
+            estadoRechazadaEncargado = new SolicitudEstado(nombre: SolicitudEstado.RECHAZADA_ENCARGADO).save()
+
+        def estadoRechazadaSistema = SolicitudEstado.find { nombre == SolicitudEstado.RECHAZADA_SISTEMA }
+        if (!estadoRechazadaSistema)
+            estadoRechazadaSistema = new SolicitudEstado(nombre: SolicitudEstado.RECHAZADA_SISTEMA).save()
+
+        def estadoCanceladaUsuario = SolicitudEstado.find { nombre == SolicitudEstado.CANCELADA_USUARIO }
+        if (!estadoCanceladaUsuario)
+            estadoCanceladaUsuario = new SolicitudEstado(nombre: SolicitudEstado.CANCELADA_USUARIO).save()
 
         // ----------------------------
         // Termina código esencial para que funcione la aplicación

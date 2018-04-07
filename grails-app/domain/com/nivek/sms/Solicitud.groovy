@@ -7,13 +7,46 @@ class Solicitud {
     // Formato 00:00 Ejemplo 16:30
     String horaFin
 
+    String razon
+
     static belongsTo = [usuario: Usuario, espacio: Espacio]
     SolicitudEstado estado
 
     static constraints = {
-        horaInicio size: 5..5
+        razon size: 1..200
+
+        espacio validator: { val, obj ->
+            val?.institucion?.id == obj.usuario?.institucion?.id
+        }
+
+        horaInicio size: 5..5, validator: { val, obj ->
+            def solicitudesSimilares = Solicitud.where {
+                espacio.id == obj.espacio?.id &&
+                estado.nombre == SolicitudEstado.APROBADA &&
+                fecha == obj.fecha &&
+                horaInicio <= val &&
+                horaFin > val
+            }
+
+            return val >= obj.espacio?.horaInicioDisponible &&
+                val < obj.espacio?.horaFinDisponible &&
+                solicitudesSimilares.count() == 0
+        }
+
         horaFin size: 5..5, validator: { val, obj ->
-            val > obj.horaInicio
+
+            def solicitudesSimilares = Solicitud.where {
+                espacio.id == obj.espacio?.id &&
+                estado.nombre == SolicitudEstado.APROBADA &&
+                fecha == obj.fecha &&
+                horaInicio < val &&
+                horaFin >= val
+            }
+
+            return val > obj.horaInicio &&
+                val > obj.espacio?.horaInicioDisponible &&
+                val <= obj.espacio?.horaFinDisponible &&
+                solicitudesSimilares.count() == 0
         }
 
         fecha validator: { val, obj ->
@@ -37,7 +70,7 @@ class Solicitud {
                 return false
             }
 
-            return obj.espacio.dias.charAt(dia) == '1'
+            return obj.espacio?.dias?.charAt(dia) == '1' && (val > new Date())
         }
     }
 

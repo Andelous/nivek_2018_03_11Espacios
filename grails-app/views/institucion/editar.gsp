@@ -10,11 +10,11 @@
 
 
                 <h4 class="text-center">
-                    <span class="oi oi-person"></span>&nbsp;
+                    <span class="oi oi-briefcase"></span>&nbsp;
                      Modificar Institucion
                 </h4>
                 <small class="text-muted d-block text-center">
-                    <strong>${institucion?.nombre}</strong> - ${institucion?.nombre}
+                    <strong>${institucion?.nombre}</strong> - ${institucion?.direccion}
                 </small>
 
                 <hr />

@@ -118,6 +118,11 @@
             </tbody>
         </table>
 
+        <g:render template="/compartido/paginacion" />
+
+        <br />
+        <br />
+
 
         <g:each in="${usuariosLista}" var="usuario">
             <div class="modal fade" id="modal${usuario.id}" tabindex="-1"

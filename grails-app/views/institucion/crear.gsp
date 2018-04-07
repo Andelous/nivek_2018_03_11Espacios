@@ -10,7 +10,7 @@
 
 
                 <h4 class="text-center">
-                    <span class="oi oi-person"></span>&nbsp;
+                    <span class="oi oi-briefcase"></span>&nbsp;
                     Registrar nueva Institucion
                 </h4>
 

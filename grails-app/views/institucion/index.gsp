@@ -11,7 +11,7 @@
                 <div class="row">
 
                     <h4 class="col-md-5 mb-0 text-center">
-                        <span class="oi oi-people"></span>
+                        <span class="oi oi-briefcase"></span>
                         Listado de instituciones
                     </h4>
 
@@ -120,8 +120,8 @@
                         </div>
 
                         <div class="modal-body text-center bg-danger text-white">
-                            ¿Est&aacute; seguro que desea eliminar el usuario
-                            ${institucion.nombre}?
+                            ¿Est&aacute; seguro que desea eliminar la instituci&oacute;n
+                            "${institucion.nombre}"?
                             <br />
                             <br />
                             <strong>Estas acciones no pueden revertirse.</strong>
@@ -144,6 +144,6 @@
         </g:each>
 
 
-       
+
     </body>
 </html>
