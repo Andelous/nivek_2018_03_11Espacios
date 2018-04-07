@@ -6,7 +6,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.web.servlet.ModelAndView
 import grails.plugin.springsecurity.SpringSecurityService
 
-@Secured(["ROLE_ADMINISTRADOR_GENERAL", "ROLE_ADMINISTRADOR_INSTITUCION"])
+@Secured([Rol.ADMINISTRADOR_GENERAL, Rol.ADMINISTRADOR_INSTITUCION])
 @Transactional(readOnly = false)
 class UsuariosController {
     def springSecurityService
@@ -65,7 +65,7 @@ class UsuariosController {
         flash.rolesLista = Rol.list()
 
         if (request.method == "POST") {
-            if (rol.authority == 'ROLE_ADMINISTRADOR_GENERAL') {
+            if (rol.authority == Rol.ADMINISTRADOR_GENERAL) {
                 usuario.institucion = null
             }
 
@@ -92,7 +92,7 @@ class UsuariosController {
         flash.rolesLista = Rol.list()
 
         if (request.method == "PUT") {
-            if (rol.authority == 'ROLE_ADMINISTRADOR_GENERAL') {
+            if (rol.authority == Rol.ADMINISTRADOR_GENERAL) {
                 usuario.institucion = null
             }
 

@@ -11,6 +11,13 @@ class Rol implements Serializable {
 
 	private static final long serialVersionUID = 1
 
+    public static final String ADMINISTRADOR_GENERAL = "ROLE_ADMINISTRADOR_GENERAL"
+    public static final String ADMINISTRADOR_INSTITUCION = "ROLE_ADMINISTRADOR_INSTITUCION"
+    public static final String ENCARGADO_ESPACIOS = "ROLE_ENCARGADO_ESPACIOS"
+    public static final String BENEFICIARIO_INSTITUCION = "ROLE_BENEFICIARIO_INSTITUCION"
+    public static final String VISOR_INSTITUCION = "ROLE_VISOR_INSTITUCION"
+
+
 	String authority
 
 	static constraints = {
@@ -25,15 +32,15 @@ class Rol implements Serializable {
 
     String toString() {
         switch(authority) {
-            case "ROLE_ADMINISTRADOR_GENERAL":
+            case ADMINISTRADOR_GENERAL:
                 return "Administrador general"
-            case "ROLE_ADMINISTRADOR_INSTITUCION":
+            case ADMINISTRADOR_INSTITUCION:
                 return "Administrador de institución"
-            case "ROLE_ENCARGADO_ESPACIOS":
+            case ENCARGADO_ESPACIOS:
                 return "Encargado de espacios"
-            case "ROLE_BENEFICIARIO_INSTITUCION":
+            case BENEFICIARIO_INSTITUCION:
                 return "Beneficiario de institución"
-            case "ROLE_VISOR_INSTITUCION":
+            case VISOR_INSTITUCION:
                 return "Visor de institución"
             default:
                 return "Desconocido"

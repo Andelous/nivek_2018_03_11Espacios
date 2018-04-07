@@ -23,7 +23,7 @@
 
                 <li class="nav-item">
                     <g:link controller="institucion" class="nav-link">
-                        <span class="oi oi-people"></span> Instituciones
+                        <span class="oi oi-briefcase"></span> Instituciones
                     </g:link>
                 </li>
 
@@ -34,9 +34,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="# ">
+                    <g:link controller="solicitudes" class="nav-link">
                         <span class="oi oi-check"></span> Solicitudes
-                    </a>
+                    </g:link>
                 </li>
 
                 <li class="nav-item">
@@ -53,9 +53,25 @@
 
             </ul>
 
+            <%@ page import="com.nivek.sms.Rol" %>
+
             <div class="btn-group">
-                <a href="#" class="btn btn-sm btn-info">
-                    Bienvenido, <strong>Administrador</strong>
+                <a href="#" class="btn btn-sm
+                    ${
+                        rolLog.authority == Rol.ADMINISTRADOR_GENERAL ?
+                            'btn-info' :
+                        rolLog.authority == Rol.ADMINISTRADOR_INSTITUCION ?
+                            'btn-primary' :
+                        rolLog.authority == Rol.ENCARGADO_ESPACIOS ?
+                            'btn-secondary' :
+                        rolLog.authority == Rol.BENEFICIARIO_INSTITUCION ?
+                            'btn-success' :
+                        rolLog.authority == Rol.VISOR_INSTITUCION ?
+                            'btn-warning' : 'btn-dark'
+                    }"
+                    data-toggle="tooltip" data-placement="bottom"
+                    title="${rolLog}${usuarioLog.institucion ? ' (' + usuarioLog.institucion + ')' : '' }">
+                    Bienvenido, <strong>${usuarioLog.persona.nombres}</strong>
                 </a>
                 <a href="${request.contextPath}/logoff" class="btn btn-outline-danger btn-sm">Cerrar sesi&oacute;n</a>
             </div>

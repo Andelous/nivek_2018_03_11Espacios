@@ -6,7 +6,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.web.servlet.ModelAndView
 import grails.plugin.springsecurity.SpringSecurityService
 
-@Secured(["ROLE_BENEFICIARIO_INSTITUCION", "ROLE_ENCARGADO_ESPACIOS"])
+@Secured([Rol.BENEFICIARIO_INSTITUCION, Rol.ENCARGADO_ESPACIOS])
 @Transactional(readOnly = false)
 class SolicitudesController {
     def springSecurityService
@@ -27,30 +27,31 @@ class SolicitudesController {
 
     def index() {
         def usuario = springSecurityService.getCurrentUser()
-        System.out.println(usuario)
+
+
     }
 
 
 
 
-    @Secured("ROLE_BENEFICIARIO_INSTITUCION")
+    @Secured(Rol.BENEFICIARIO_INSTITUCION)
     def misSolicitudes() {
 
     }
 
-    @Secured("ROLE_BENEFICIARIO_INSTITUCION")
+    @Secured(Rol.BENEFICIARIO_INSTITUCION)
     @Transactional
     def crear(Solicitud solicitud) {
 
     }
 
-    @Secured("ROLE_BENEFICIARIO_INSTITUCION")
+    @Secured(Rol.BENEFICIARIO_INSTITUCION)
     @Transactional
     def editar(Solicitud solicitud) {
 
     }
 
-    @Secured("ROLE_BENEFICIARIO_INSTITUCION")
+    @Secured(Rol.BENEFICIARIO_INSTITUCION)
     @Transactional
     def cancelar(Solicitud solicitud) {
 
@@ -60,26 +61,26 @@ class SolicitudesController {
 
 
 
-    @Secured("ROLE_ENCARGADO_ESPACIOS")
+    @Secured(Rol.ENCARGADO_ESPACIOS)
     def misEspacios() {
 
     }
 
-    @Secured("ROLE_ENCARGADO_ESPACIOS")
+    @Secured(Rol.ENCARGADO_ESPACIOS)
     @Transactional
-    def aprobar() {
+    def aprobar(Solicitud solicitud) {
 
     }
 
-    @Secured("ROLE_ENCARGADO_ESPACIOS")
+    @Secured(Rol.ENCARGADO_ESPACIOS)
     @Transactional
-    def rechazar() {
+    def rechazar(Solicitud solicitud) {
 
     }
 
-    @Secured("ROLE_ENCARGADO_ESPACIOS")
+    @Secured(Rol.ENCARGADO_ESPACIOS)
     @Transactional
-    def restaurar() {
+    def restaurar(Solicitud solicitud) {
 
     }
 }

@@ -23,10 +23,10 @@ class Espacio {
     static hasMany = [solicitudes: Solicitud, usuarios: Usuario]
 
     static constraints = {
-        nombre size: 1..100, matches: "^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+\$"
+        nombre size: 1..100, matches: "^[a-zA-Z#1234567890àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+\$"
         horaInicioDisponible size: 5..5
         horaFinDisponible size: 5..5, validator: { val, obj ->
-            horaFinDisponible > horaInicioDisponible
+            val > obj.horaInicioDisponible
         }
 
         dias size: 7..7

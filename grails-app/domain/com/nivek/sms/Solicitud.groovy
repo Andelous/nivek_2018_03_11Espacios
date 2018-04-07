@@ -13,7 +13,7 @@ class Solicitud {
     static constraints = {
         horaInicio size: 5..5
         horaFin size: 5..5, validator: { val, obj ->
-            horaFin > horaInicio
+            val > obj.horaInicio
         }
 
         fecha validator: { val, obj ->

@@ -1,4 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
+
+<sec:ifLoggedIn>
+    <%@ page import="com.nivek.sms.Usuario" %>
+
+    <g:set var="idUsuario">
+        <sec:loggedInUserInfo field="id" />
+    </g:set>
+
+    <g:set var="usuarioLog" value="${Usuario.get(idUsuario.trim())}" />
+    <g:set var="rolLog" value="${usuarioLog.authorities[0]}" />
+</sec:ifLoggedIn>
+
 <html lang="es">
 
     <head>
@@ -31,6 +43,12 @@
 
     <g:render template="/layouts/footer" />
     <asset:javascript src="application.js" />
+
+    <script type="text/javascript">
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </body>
 
 </html>
