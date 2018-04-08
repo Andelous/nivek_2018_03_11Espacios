@@ -1,11 +1,11 @@
 package com.nivek.sms
 
 class SolicitudEstado {
-    public static final String APROBADA = "APROBADA"
-    public static final String EN_REVISION = "EN_REVISION"
-    public static final String RECHAZADA_ENCARGADO = "RECHAZADA_ENCARGADO"
-    public static final String RECHAZADA_SISTEMA = "RECHAZADA_SISTEMA"
-    public static final String CANCELADA_USUARIO = "CANCELADA_USUARIO"
+    public static final String APROBADA = "2APROBADA"
+    public static final String EN_REVISION = "1EN_REVISION"
+    public static final String RECHAZADA_ENCARGADO = "3RECHAZADA_ENCARGADO"
+    public static final String RECHAZADA_SISTEMA = "4RECHAZADA_SISTEMA"
+    public static final String CANCELADA_USUARIO = "5CANCELADA_USUARIO"
 
     String nombre
 

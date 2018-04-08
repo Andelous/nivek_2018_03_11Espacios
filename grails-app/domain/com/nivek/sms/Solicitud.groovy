@@ -21,11 +21,19 @@ class Solicitud {
 
         horaInicio size: 5..5, validator: { val, obj ->
             def solicitudesSimilares = Solicitud.where {
+                id != obj.id &&
                 espacio.id == obj.espacio?.id &&
                 estado.nombre == SolicitudEstado.APROBADA &&
                 fecha == obj.fecha &&
-                horaInicio <= val &&
-                horaFin > val
+                (
+                    (
+                        horaInicio <= val &&
+                        horaFin > val
+                    ) || (
+                        horaInicio >= val &&
+                        horaFin <= obj.horaFin
+                    )
+                )
             }
 
             return val >= obj.espacio?.horaInicioDisponible &&
@@ -36,11 +44,19 @@ class Solicitud {
         horaFin size: 5..5, validator: { val, obj ->
 
             def solicitudesSimilares = Solicitud.where {
+                id != obj.id &&
                 espacio.id == obj.espacio?.id &&
                 estado.nombre == SolicitudEstado.APROBADA &&
                 fecha == obj.fecha &&
-                horaInicio < val &&
-                horaFin >= val
+                (
+                    (
+                        horaInicio < val &&
+                        horaFin >= val
+                    ) || (
+                        horaInicio >= obj.horaInicio &&
+                        horaFin <= val
+                    )
+                )
             }
 
             return val > obj.horaInicio &&

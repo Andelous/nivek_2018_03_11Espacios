@@ -81,7 +81,7 @@
         </g:if>
 
 
-        <table class="table">
+        <table class="table table-hover">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Espacio</th>
@@ -96,15 +96,15 @@
                     <%@ page import="com.nivek.sms.SolicitudEstado" %>
                     <g:set var="cancelada" value="${false}" />
                     <g:set var="aprobada" value="${false}" />
-                    <g:set var="rechazada" value="${false}" />
+                    <g:set var="enRevision" value="${false}" />
+                    <g:set var="rechazadaEncargado" value="${false}" />
+                    <g:set var="rechazadaSistema" value="${false}" />
 
                     <g:set var="cancelada" value="${solicitud?.estado?.nombre == SolicitudEstado.CANCELADA_USUARIO}" />
                     <g:set var="aprobada" value="${solicitud?.estado?.nombre == SolicitudEstado.APROBADA}" />
-                    <g:set var="rechazada"
-                        value="${
-                            solicitud?.estado?.nombre == SolicitudEstado.RECHAZADA_SISTEMA ||
-                            solicitud?.estado?.nombre == SolicitudEstado.RECHAZADA_ENCARGADO
-                        }" />
+                    <g:set var="enRevision" value="${solicitud?.estado?.nombre == SolicitudEstado.EN_REVISION}" />
+                    <g:set var="rechazadaEncargado" value="${solicitud?.estado?.nombre == SolicitudEstado.RECHAZADA_ENCARGADO}" />
+                    <g:set var="rechazadaSistema" value="${solicitud?.estado?.nombre == SolicitudEstado.RECHAZADA_SISTEMA}" />
 
                     <tr>
                         <td scope="row"><strong>${solicitud.espacio}</strong></td>
@@ -120,21 +120,21 @@
                             <i class="
                                 ${cancelada ? 'text-danger' : ''}
                                 ${aprobada ? 'text-success' : ''}
-                                ${rechazada ? 'text-muted' : ''}
+                                ${rechazadaEncargado || rechazadaSistema ? 'text-muted' : ''}
                             ">
                                 ${solicitud.estado}
                             </i>
                         </td>
                         <td>
                             <g:link class="btn btn-link btn-sm text-dark
-                                ${cancelada ? 'disabled' : ''}"
+                                ${enRevision ? '' : 'disabled'}"
                                 controller="solicitudes" action="editar"
                                 params="['solicitud.id': solicitud.id]">
                                 <span class="oi oi-pencil text-primary"></span>
                                 Editar
                             </g:link>
                             <a href="#" class="btn btn-link btn-sm text-dark
-                                ${cancelada ? 'disabled' : ''}"
+                                ${aprobada || enRevision ? '' : 'disabled'}"
                                 data-toggle="modal" data-target="#modal${solicitud.id}">
                                 <span class="oi oi-circle-x text-danger"></span>
                                 Cancelar

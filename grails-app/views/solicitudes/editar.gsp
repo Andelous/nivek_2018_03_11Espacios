@@ -14,9 +14,9 @@
                     Modificar solicitud
                 </h4>
 
-                <small class="text-muted">
+                <small class="text-muted d-block text-center">
                     <strong>${solicitud?.espacio}</strong>
-                    -
+                    |
                     <i>${solicitud.fecha.format("yyyy-MM-dd")}</i>,
                     de
                     <strong>${solicitud.horaInicio}</strong>
