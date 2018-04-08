@@ -22,7 +22,7 @@
                                     class="form-control form-control-sm"
                                     placeholder="Nombre"
                                     aria-describedby="basic-addon2"
-                                    value="${q}">
+                                    value="${q}" maxlength=50>
 
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-outline-secondary btn-sm">
@@ -56,7 +56,8 @@
 
             <div class="col-md-2 border border-top-0 border-bottom-0 border-right-0">
                 <g:link controller="usuarios" action="crear"
-                    class="btn btn-primary btn-sm btn-block">
+                    class="btn btn-primary btn-sm btn-block"
+                    params="['usuario.institucion.id': institucion?.id]">
                     <span class="oi oi-plus"></span> Nuevo usuario
                 </g:link>
             </div>
@@ -79,6 +80,16 @@
         <g:if test="${params.eliminado}">
             <div class="alert alert-warning">
                 Usuario eliminado con &eacute;xito
+            </div>
+        </g:if>
+
+        <g:if test="${params.errorAcceso}">
+            <div class="alert alert-danger">
+                <h5 class="alert-heading">
+                    <strong>Error</strong>
+                </h5>
+                No tienes permiso para ver, crear o modificar los datos de otras
+                instituciones y/o usuarios.
             </div>
         </g:if>
 

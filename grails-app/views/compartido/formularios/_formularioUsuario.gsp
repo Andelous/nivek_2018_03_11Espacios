@@ -2,7 +2,8 @@
     <label>Nombres</label>
     <input type="text" class="form-control form-control-sm"
      placeholder="Nombres" name="usuario.persona.nombres"
-     required value="${usuario?.persona?.nombres}" />
+     required value="${usuario?.persona?.nombres}"
+     maxlength=50 />
 </div>
 
 <div class="row">
@@ -12,7 +13,8 @@
             <input type="text" class="form-control form-control-sm"
              placeholder="Apellido paterno"
              name="usuario.persona.apellidoPaterno"
-             required value="${usuario?.persona?.apellidoPaterno}" />
+             required value="${usuario?.persona?.apellidoPaterno}"
+             maxlength=20 />
         </div>
     </div>
 
@@ -23,7 +25,8 @@
             <input type="text" class="form-control form-control-sm"
              placeholder="Apellido materno"
              name="usuario.persona.apellidoMaterno"
-             required value="${usuario?.persona?.apellidoMaterno}" />
+             required value="${usuario?.persona?.apellidoMaterno}"
+             maxlength=20 />
         </div>
     </div>
 </div>
@@ -36,7 +39,8 @@
     <label><strong>Nombre de usuario</strong></label>
     <input type="text" class="form-control form-control-sm"
      placeholder="Ej. usuarioLaSalle" name="usuario.username"
-     required value="${usuario?.username}" />
+     required value="${usuario?.username}"
+     maxlength=50 minlength=4 />
 </div>
 
 <div class="row">
@@ -45,7 +49,8 @@
             <label>Contrase&ntilde;a</label>
             <input type="password" class="form-control form-control-sm"
              placeholder="Debe contener m&aacute;s de 4 caracteres"
-             name="usuario.password" required />
+             name="usuario.password" required
+             maxlength=50 minlength=4 />
         </div>
     </div>
 
@@ -55,7 +60,8 @@
             <label>Confirmar contrase&ntilde;a</label>
             <input type="password" class="form-control form-control-sm"
              placeholder="Confirmar contrase&ntilde;a"
-             name="usuario.passwordC" required />
+             name="usuario.passwordC" required
+             maxlength=50 minlength=4 />
         </div>
     </div>
 </div>

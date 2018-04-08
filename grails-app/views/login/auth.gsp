@@ -60,16 +60,17 @@
                             class="input-group-text">
                                 <span class="oi oi-person"></span>
                             </span>
-                            
+
                         </div>
 
                         <input
-                        type="text"
-                        class="form-control"
-                        maxlength="20"
-                        placeholder="Usuario"
-                        name="username"
-                        required>
+                            type="text"
+                            class="form-control"
+                            maxlength=50
+                            minlength=4
+                            placeholder="Usuario"
+                            name="username"
+                            required>
 
                     </div>
 
@@ -87,12 +88,12 @@
                         </div>
 
                         <input type="password"
-                        class="form-control"
-                        placeholder="Contrase&ntilde;a"
-                        minlength="4"
-                        maxlength="50"
-                        name="password"
-                        required>
+                            class="form-control"
+                            placeholder="Contrase&ntilde;a"
+                            minlength="4"
+                            maxlength="50"
+                            name="password"
+                            required>
 
                     </div>
 

@@ -22,7 +22,7 @@
                                     class="form-control form-control-sm"
                                     placeholder="Nombre"
                                     aria-describedby="basic-addon2"
-                                    value="${q}">
+                                    value="${q}" maxlength=50>
 
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-outline-secondary btn-sm">
