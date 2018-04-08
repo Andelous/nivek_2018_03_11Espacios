@@ -39,7 +39,7 @@
                                     <option value="">Todas</option>
                                     <g:each in="${institucionesLista}" var="i">
                                         <option value="${i.id}"
-                                            ${ i.id.toString() == institucion?.id ? "selected" : ""}>
+                                            ${ i.id == institucion?.id ? "selected" : ""}>
                                             ${i}
                                         </option>
                                     </g:each>

@@ -65,7 +65,7 @@ class UsuariosController {
             q: params.q,
             paginas: paginas,
             institucionesLista: institucionesLista,
-            institucion: [id: institucion?.id]
+            institucion: institucion
         ]
     }
 

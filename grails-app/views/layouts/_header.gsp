@@ -1,6 +1,6 @@
 <sec:ifLoggedIn>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand border border-secondary border-left-0 border-top-0 border-bottom-0" href="#">
+        <a class="navbar-brand border border-secondary border-left-0 border-top-0 border-bottom-0" href="${request.contextPath}">
             <asset:image
             src="s.png"
             width="30px"
