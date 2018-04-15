@@ -40,9 +40,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="# ">
+                    <g:link controller="calendario" class="nav-link">
                         <span class="oi oi-calendar"></span> Calendario
-                    </a>
+                    </g:link>
                 </li>
 
                 <li class="nav-item">
