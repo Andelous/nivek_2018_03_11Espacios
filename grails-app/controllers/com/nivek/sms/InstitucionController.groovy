@@ -8,7 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.web.servlet.ModelAndView
 
 
-@Secured("IS_AUTHENTICATED_FULLY")
+@Secured(Rol.ADMINISTRADOR_GENERAL)
 @Transactional(readOnly = false)
 class InstitucionController {
 
@@ -38,14 +38,13 @@ class InstitucionController {
         def q = "%" + params.q + "%"
 
         def query = Institucion.where {
-            nombre =~ q 
+            nombre =~ q
         }
 
         if(query==null){
             query = Institucion.list(paginas)
-
         }
-      
+
 
         institucionesLista = query.list(paginas)
         paginas = Math.ceil(query.count() / tamanoPagina)
@@ -55,56 +54,46 @@ class InstitucionController {
             pag: params.pag,
             q: params.q,
             paginas: paginas,
-        
+
         ]
     }
 
-    
+
     @Transactional
     def crear(Institucion institucion) {
- 
         if (request.method == "POST") {
-           
-                if(institucion.save()){
-                     redirect(action: "index", controller: "institucion", params: [creado: 1])
-
-                }
-
-           
-        }
-    }
-
-    
-    @Transactional
-    def editar(Institucion institucion) {
-     
-
-        if (request.method == "PUT") {
-            
-                 if (institucion.save()) {
-            
-
-                redirect(action: "index", controller: "institucion", params: [actualizado: 1])
+            if(institucion.save()){
+                 redirect(action: "index", controller: "institucion", params: [creado: 1])
             }
         }
 
-         [
-            institucion: institucion,
-            
+        [
+            institucion: institucion
         ]
+    }
 
+
+    @Transactional
+    def editar(Institucion institucion) {
+        if (request.method == "PUT") {
+             if (institucion.save()) {
+                 redirect(action: "index", controller: "institucion", params: [actualizado: 1])
+            }
         }
-    
 
-   
+        [
+            institucion: institucion
+        ]
+    }
+
 
      @Transactional
     def eliminar(Institucion institucion) {
-      
         institucion.delete()
 
         redirect(action: "index", controller: "institucion", params: [eliminado: 1])
     }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {

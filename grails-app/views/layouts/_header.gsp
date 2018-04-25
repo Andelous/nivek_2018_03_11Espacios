@@ -28,9 +28,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="# ">
+                    <g:link controller="espacios" class="nav-link">
                         <span class="oi oi-spreadsheet"></span> Espacios
-                    </a>
+                    </g:link>
                 </li>
 
                 <li class="nav-item">
