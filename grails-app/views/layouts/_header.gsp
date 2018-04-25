@@ -46,9 +46,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="# ">
+                    <g:link controller="reportes" class="nav-link">
                         <span class="oi oi-clipboard"></span> Reportes
-                    </a>
+                    </g:link>
                 </li>
 
             </ul>
