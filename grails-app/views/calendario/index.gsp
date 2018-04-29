@@ -7,54 +7,54 @@
         <asset:stylesheet src="fullcalendar.min.css" />
         <asset:javascript src="moment.min.js"/>
         <asset:javascript src="fullcalendar.js"/>
+        <asset:javascript src="es-us.js"/>
         <g:javascript>
         setTimeout(function() {
             $(document).ready(function() {
+              var eventos = new Array();
+              var it = 0;
+              obj = {"title":null,
+                      "start":null,
+                      "end":null
+                    }
+              var tabla = document.getElementById('tablaDatos');
+              for (var r = 1, n = tabla.rows.length; r < n; r++) {
+                  for (var c = 0, m = tabla.rows[r].cells.length; c < m; c++) {
+                       if(it == 1){
+                        obj.title = tabla.rows[r].cells[c].innerHTML;
+                      }else if(it == 2){
+                        obj.start = tabla.rows[r].cells[c].innerHTML;
+                      }else if(it == 3){
+                        obj.end = tabla.rows[r].cells[c].innerHTML;
+                      }
+                      it++;
+                      if(it == 4   ){
+                        it = 0;
+                        eventos.push(obj)
+                        obj = {"title":null,
+                                "start":null,
+                                "end":null
+                              }
+                      }
+                  }
+              }
+
               $('#calendar').fullCalendar({
+                locale: 'es-us',
                 header: {
                   left: 'prev,next today',
                   center: 'title',
                   right: 'month,agendaWeek,agendaDay,listWeek'
                 },
-                defaultDate: '2018-04-16',
                 navLinks: true,
-                editable: true,
+                editable: false,
                 eventLimit: true,
-                events: [
-                  {
-                    title: 'Primer Evento',
-                    start: '2018-04-01',
-                  },
-                  {
-                    title: 'Evento de tres días',
-                    start: '2018-04-07',
-                    end: '2018-04-10'
-                  },
-                  {
-                    id: 999,
-                    title: 'Evento repetido',
-                    start: '2018-04-09T16:00:00Z'
-                  },
-                  {
-                    id: 999,
-                    title: 'Evento repetido',
-                    start: '2018-04-16T16:00:00Z'
-                  },
-                  {
-                    title: 'Conferencia',
-                    start: '2018-03-11',
-                    end: '2018-03-13'
-                  },
-                  {
-                    title: 'Junta',
-                    start: '2018-03-12T10:30:00',
-                    end: '2018-03-12T12:30:00'
-                  }
-                ]
+                events: eventos
               });
 
+
             });
-          },1000);
+          },1);
         </g:javascript>
         <style>
           body {
@@ -71,6 +71,27 @@
         </style>
     </head>
     <body>
-      <div id='calendar'></div>
+    <div id='calendar'></div>
+      <div style="display: none" >
+        <p>Prueba de datos</p>
+        <table id="tablaDatos" class="table  table-hover">
+          <thead class="thead-dark">
+            <th>usuario</th>
+            <th>titulo</th>
+            <th>fechaInicio</th>
+            <th>fechaFin</th>
+          </thead>
+          <tbody>
+            <g:each in="${solicitudes}" var="sol">
+              <tr>
+                <td>${sol.usuario.username}</td>
+                <td>${sol.razon}</td>
+                <td>${sol.fecha.format('yyyy-MM-dd')+'T'+sol.horaInicio+':00.00Z'}</td>
+                <td>${sol.fecha.format('yyyy-MM-dd')+'T'+sol.horaFin+':00.00Z'}</td>
+              </tr>
+            </g:each>
+          </tbody>
+        </table>
+      </div>
     </body>
 </html>
