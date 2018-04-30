@@ -116,6 +116,12 @@
                                 <span class="oi oi-circle-x text-danger"></span>
                                 Eliminar
                             </a>
+                            <g:link class="btn btn-link btn-sm text-dark"
+                                controller="espacios" action="asignarEncargados"
+                                params="['espacio.id': espacio.id]">
+                                <span class="oi oi-people text-success"></span>
+                                Asignar encargados
+                            </g:link>
                         </td>
                     </tr>
                 </g:each>

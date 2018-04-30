@@ -1,3 +1,5 @@
+<%@ page import="com.nivek.sms.Rol" %>
+
 <sec:ifLoggedIn>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
         <a class="navbar-brand border border-secondary border-left-0 border-top-0 border-bottom-0" href="${request.contextPath}">
@@ -15,45 +17,60 @@
 
         <div class="collapse navbar-collapse" id="navbarCabecera">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <g:link controller="usuarios" class="nav-link">
-                        <span class="oi oi-people"></span> Usuarios
-                    </g:link>
-                </li>
+                <g:if test="${
+                    rolLog.authority == Rol.ADMINISTRADOR_GENERAL ||
+                    rolLog.authority == Rol.ADMINISTRADOR_INSTITUCION
+                }">
+                    <li class="nav-item">
+                        <g:link controller="usuarios" class="nav-link">
+                            <span class="oi oi-people"></span> Usuarios
+                        </g:link>
+                    </li>
+                </g:if>
 
-                <li class="nav-item">
-                    <g:link controller="institucion" class="nav-link">
-                        <span class="oi oi-briefcase"></span> Instituciones
-                    </g:link>
-                </li>
+                <g:if test="${rolLog.authority == Rol.ADMINISTRADOR_GENERAL}">
+                    <li class="nav-item">
+                        <g:link controller="institucion" class="nav-link">
+                            <span class="oi oi-briefcase"></span> Instituciones
+                        </g:link>
+                    </li>
+                </g:if>
 
-                <li class="nav-item">
-                    <g:link controller="espacios" class="nav-link">
-                        <span class="oi oi-spreadsheet"></span> Espacios
-                    </g:link>
-                </li>
+                <g:if test="${rolLog.authority == Rol.ADMINISTRADOR_INSTITUCION}">
+                    <li class="nav-item">
+                        <g:link controller="espacios" class="nav-link">
+                            <span class="oi oi-spreadsheet"></span> Espacios
+                        </g:link>
+                    </li>
+                </g:if>
 
-                <li class="nav-item">
-                    <g:link controller="solicitudes" class="nav-link">
-                        <span class="oi oi-check"></span> Solicitudes
-                    </g:link>
-                </li>
+                <g:if test="${
+                    rolLog.authority == Rol.ENCARGADO_ESPACIOS ||
+                    rolLog.authority == Rol.BENEFICIARIO_INSTITUCION
+                }">
+                    <li class="nav-item">
+                        <g:link controller="solicitudes" class="nav-link">
+                            <span class="oi oi-check"></span> Solicitudes
+                        </g:link>
+                    </li>
+                </g:if>
 
-                <li class="nav-item">
-                    <g:link controller="calendario" class="nav-link">
-                        <span class="oi oi-calendar"></span> Calendario
-                    </g:link>
-                </li>
+                <g:if test="${rolLog.authority != Rol.ADMINISTRADOR_GENERAL}">
+                    <li class="nav-item">
+                        <g:link controller="calendario" class="nav-link">
+                            <span class="oi oi-calendar"></span> Calendario
+                        </g:link>
+                    </li>
 
-                <li class="nav-item">
-                    <g:link controller="reportes" class="nav-link">
-                        <span class="oi oi-clipboard"></span> Reportes
-                    </g:link>
-                </li>
+                    <li class="nav-item">
+                        <g:link controller="reportes" class="nav-link">
+                            <span class="oi oi-clipboard"></span> Reportes
+                        </g:link>
+                    </li>
+                </g:if>
+
 
             </ul>
-
-            <%@ page import="com.nivek.sms.Rol" %>
 
             <div class="btn-group">
                 <a href="#" class="btn btn-sm

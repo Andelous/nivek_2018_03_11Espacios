@@ -38,7 +38,7 @@
 
                     <g:render template="/compartido/formularios/formularioEspacio" model="[espacio: espacio]"/>
 
-                    <input type="submit" name="Registrar" value="Registrar"
+                    <input type="submit" name="Actualizar" value="Actualizar"
                         class="btn btn-primary btn-block">
 
                 </g:form>

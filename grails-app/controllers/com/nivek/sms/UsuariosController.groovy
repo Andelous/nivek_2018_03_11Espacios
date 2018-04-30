@@ -102,6 +102,7 @@ class UsuariosController {
                 UsuarioRol.create usuario, rol
 
                 redirect(action: "index", controller: "usuarios", params: [creado: 1])
+                return
             } else {
                 [
                     usuario: usuario,
@@ -126,6 +127,7 @@ class UsuariosController {
         ) {
             redirect(action: "index", controller: "usuarios",
                 params: [errorAcceso: 1])
+            return
         } else {
             flash.institucionesLista = usuarioActual.institucion ?
                 [Institucion.get(usuarioActual.institucion.id)]
@@ -149,6 +151,7 @@ class UsuariosController {
                     UsuarioRol.create usuario, rol
 
                     redirect(action: "index", controller: "usuarios", params: [actualizado: 1])
+                    return
                 }
             } else {
                 rol = usuario.authorities[0]
@@ -176,6 +179,7 @@ class UsuariosController {
         ) {
             redirect(action: "index", controller: "usuarios",
                 params: [errorAcceso: 1])
+            return
         } else {
             def persona = usuario.persona
 
@@ -184,6 +188,7 @@ class UsuariosController {
             persona.delete()
 
             redirect(action: "index", controller: "usuarios", params: [eliminado: 1])
+            return
         }
     }
 }

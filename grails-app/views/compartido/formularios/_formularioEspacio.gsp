@@ -72,7 +72,7 @@
             </label>
         </div>
 
-        <input type="hidden" name="espacio.dias" id="diasEspacio" value="${espacio?.dias}">
+        <input type="hidden" name="espacio.dias" id="diasEspacio">
     </div>
 
     <div class="col-md">
@@ -114,6 +114,7 @@
 
     function inicializarDias() {
         var str = "${espacio ? espacio.dias : '1111100'}";
+        document.getElementById("diasEspacio").value = str;
 
         for (var i = 0; i < labels.length; i++) {
             if (str[i] == "1") {

@@ -84,7 +84,7 @@
 </div>
 
 
-<div class="form-group">
+<div class="form-group" id="divInstitucion">
     <label>Instituci&oacute;n</label>
     <select class="form-control form-control-sm" id="selectInstitucion"
         name="usuario.institucion.id">
@@ -98,3 +98,16 @@
 </div>
 
 <br />
+
+<script type="text/javascript">
+    var selectRol = document.getElementById("selectRol");
+    var divInstitucion = document.getElementById("divInstitucion");
+
+    selectRol.addEventListener("change", repintarDivInstitucion);
+
+    function repintarDivInstitucion() {
+        divInstitucion.classList.toggle("d-none", selectRol.value == 1);
+    }
+
+    repintarDivInstitucion();
+</script>
