@@ -64,6 +64,7 @@ class InstitucionController {
         if (request.method == "POST") {
             if(institucion.save()){
                  redirect(action: "index", controller: "institucion", params: [creado: 1])
+                 return
             }
         }
 
@@ -77,7 +78,15 @@ class InstitucionController {
     def editar(Institucion institucion) {
         if (request.method == "PUT") {
              if (institucion.save()) {
+                 def usuarios = Usuario.findAllByInstitucion(institucion)
+
+                 for (u in usuarios) {
+                     u.enabled = institucion.activa
+                     u.save()
+                 }
+
                  redirect(action: "index", controller: "institucion", params: [actualizado: 1])
+                 return
             }
         }
 
@@ -92,6 +101,7 @@ class InstitucionController {
         institucion.delete()
 
         redirect(action: "index", controller: "institucion", params: [eliminado: 1])
+        return
     }
 
     protected void notFound() {

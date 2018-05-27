@@ -28,10 +28,14 @@ class SolicitudesController {
     def index() {
         def usuario = springSecurityService.getCurrentUser()
 
-        if (usuario.authorities[0].authority == Rol.BENEFICIARIO_INSTITUCION)
+        if (usuario.authorities[0].authority == Rol.BENEFICIARIO_INSTITUCION) {
             redirect(action: "misSolicitudes")
-        else
+            return
+        }
+        else {
             redirect(action: "misEspacios")
+            return
+        }
     }
 
 
@@ -120,6 +124,7 @@ class SolicitudesController {
             if (intento) {
                 redirect(action: "misSolicitudes", controller: "solicitudes",
                     params: [creada: 1])
+                return
             }
         }
 
@@ -143,6 +148,7 @@ class SolicitudesController {
             ) {
                 redirect(action: "misSolicitudes", controller: "solicitudes",
                     params: [errorAcceso: 1])
+                return
             }
         }
 
@@ -151,6 +157,7 @@ class SolicitudesController {
             if (intento) {
                 redirect(action: "misSolicitudes", controller: "solicitudes",
                     params: [actualizada: 1])
+                return
             }
         }
 
@@ -169,6 +176,7 @@ class SolicitudesController {
         ) {
             redirect(action: "misSolicitudes", controller: "solicitudes",
                 params: [errorAcceso: 1])
+            return
         } else {
             def estadoCanceladaUsuario = SolicitudEstado.find { nombre == SolicitudEstado.CANCELADA_USUARIO }
 
@@ -176,9 +184,11 @@ class SolicitudesController {
             if (solicitud.save()) {
                 redirect(action: "misSolicitudes", controller: "solicitudes",
                     params: [cancelada: 1])
+                return
             } else {
                 redirect(action: "misSolicitudes", controller: "solicitudes",
                     params: [errorAcceso: 1])
+                return
             }
         }
     }
@@ -291,6 +301,7 @@ class SolicitudesController {
         ) {
             redirect(action: "misEspacios", controller: "solicitudes",
                 params: [errorAcceso: 1])
+            return
         } else {
             // Si cumple con las características,
             // le cambiamos el estado y guardamos
@@ -333,9 +344,11 @@ class SolicitudesController {
 
                 redirect(action: "misEspacios", controller: "solicitudes",
                     params: [aprobada: 1])
+                return
             } else {
                 redirect(action: "misEspacios", controller: "solicitudes",
                     params: [errorAcceso: 1])
+                return
             }
         }
     }
@@ -367,6 +380,7 @@ class SolicitudesController {
         ) {
             redirect(action: "misEspacios", controller: "solicitudes",
                 params: [errorAcceso: 1])
+            return
         } else {
             // Si cumple con las características,
             // le cambiamos el estado y guardamos
@@ -414,9 +428,11 @@ class SolicitudesController {
 
                 redirect(action: "misEspacios", controller: "solicitudes",
                     params: [rechazada: 1])
+                return
             } else {
                 redirect(action: "misEspacios", controller: "solicitudes",
                     params: [errorAcceso: 1])
+                return
             }
         }
     }
@@ -445,6 +461,7 @@ class SolicitudesController {
         ) {
             redirect(action: "misEspacios", controller: "solicitudes",
                 params: [errorAcceso: 1])
+            return
         } else {
             // Si cumple con las características,
             // le cambiamos el estado y guardamos
@@ -457,9 +474,11 @@ class SolicitudesController {
             if (solicitud.save()) {
                 redirect(action: "misEspacios", controller: "solicitudes",
                     params: [restaurada: 1])
+                return
             } else {
                 redirect(action: "misEspacios", controller: "solicitudes",
                     params: [errorAcceso: 1])
+                return
             }
         }
     }

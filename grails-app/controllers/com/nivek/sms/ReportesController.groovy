@@ -29,8 +29,9 @@ class ReportesController {
         if (espacio && espacio?.institucion?.id != usuarioActual.institucion.id) {
             redirect(action: "index",
                 params: [errorAcceso: 1])
+            return
         }
-        
+
         if (params.inicio && params.fin) {
             inicio = Date.parse("yyyy-MM-dd HH:mm:ss.S", params.inicio)
             fin = Date.parse("yyyy-MM-dd HH:mm:ss.S", params.fin)
