@@ -15,11 +15,17 @@
      required value="${institucion?.direccion}" />
 </div>
 
+<div class="form-group">
+<label>Activo</label>
+<g:checkBox name="institucion.activa" value="${institucion?.activa}" class="form-control form-control-sm"/>
+</div>
 
+<!--
 <div class="form-group">
     <label>Activo</label>
-    <input type="text" class="form-control form-control-sm"
+    <input type="checkbox" class="form-control form-control-sm"
      placeholder="" name="institucion.activa"
      required value="${institucion?.activa}" />
 </div>
+-->
 

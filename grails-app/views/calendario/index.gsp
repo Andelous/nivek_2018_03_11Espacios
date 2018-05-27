@@ -7,7 +7,7 @@
         <asset:stylesheet src="fullcalendar.min.css" />
         <asset:javascript src="moment.min.js"/>
         <asset:javascript src="fullcalendar.js"/>
-        <asset:javascript src="es-us.js"/>
+        <asset:javascript src="es.js"/>
         <g:javascript>
         setTimeout(function() {
             $(document).ready(function() {
@@ -28,7 +28,7 @@
                         obj.end = tabla.rows[r].cells[c].innerHTML;
                       }
                       it++;
-                      if(it == 4   ){
+                      if(it == 5   ){
                         it = 0;
                         eventos.push(obj)
                         obj = {"title":null,
@@ -40,12 +40,13 @@
               }
 
               $('#calendar').fullCalendar({
-                locale: 'es-us',
                 header: {
                   left: 'prev,next today',
                   center: 'title',
                   right: 'month,agendaWeek,agendaDay,listWeek'
                 },
+                locale: 'es',
+                weekNumbers: true,
                 navLinks: true,
                 editable: false,
                 eventLimit: true,
@@ -71,8 +72,25 @@
         </style>
     </head>
     <body>
+
+    <div style="display:none" class="col-md md-4 float-right">
+        <div class="form-group">
+        <select class="form-control form-control-sm" id="selectEspacio" onchange="filtrarEspacios()">
+          <option>Todos</option>
+          <g:each in="${solicitudes}" var="sol">
+            <option>${sol.espacio.nombre}</option>
+          </g:each>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-12 text-center"> 
+      <button type="button" class="btn btn-outline-info btn-lg" onclick='print()'>Imprimir Calendario</button>
+    </div>
+    
+    </br>
     <div id='calendar'></div>
-      <div style="display: none" >
+      <div style="display:none" >
         <p>Prueba de datos</p>
         <table id="tablaDatos" class="table  table-hover">
           <thead class="thead-dark">
@@ -80,18 +98,22 @@
             <th>titulo</th>
             <th>fechaInicio</th>
             <th>fechaFin</th>
+            <th>espacio</th>
           </thead>
           <tbody>
             <g:each in="${solicitudes}" var="sol">
               <tr>
                 <td>${sol.usuario.username}</td>
-                <td>${sol.razon}</td>
+                <td>${sol.razon} ${sol.espacio.nombre} </td>
                 <td>${sol.fecha.format('yyyy-MM-dd')+'T'+sol.horaInicio+':00.00Z'}</td>
                 <td>${sol.fecha.format('yyyy-MM-dd')+'T'+sol.horaFin+':00.00Z'}</td>
+                <td>${sol.espacio.nombre}</td>
               </tr>
             </g:each>
           </tbody>
         </table>
       </div>
+
+
     </body>
 </html>
