@@ -57,8 +57,8 @@
 
                 <g:if test="${rolLog.authority != Rol.ADMINISTRADOR_GENERAL}">
                     <li class="nav-item">
-                        <g:link controller="calendario" class="nav-link">
-                            <span class="oi oi-calendar"></span> Calendario
+                        <g:link controller="calendario" params="['espacios.id': 0]" class="nav-link">
+                            <span class="oi oi-calendar" ></span> Calendario
                         </g:link>
                     </li>
 

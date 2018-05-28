@@ -22,13 +22,52 @@ class CalendarioController {
         def beneficiarioActual = springSecurityService.getCurrentUser()
         def institucion = beneficiarioActual.institucion
         def mapa = [:]
+        def solicitudesAprobadas = []
 
-        def solicitudesAprobadas = Solicitud.where {
-          estado.nombre == SolicitudEstado.APROBADA &&
-          espacio.institucion == institucion
+
+        def espacios = Espacio.where{
+            institucion.id == beneficiarioActual.institucion.id
         }.findAll()
-        mapa.put("solicitudes",solicitudesAprobadas)
-        respond Calendario.list(params), model: mapa
+
+
+
+
+            def valor = Integer.parseInt(params.espacios?.id)
+
+
+            
+            println(params)
+            println valor
+
+            if(valor == 0){
+                println "Valor 0"
+                 solicitudesAprobadas = Solicitud.where {
+                     estado.nombre == SolicitudEstado.APROBADA &&
+                    espacio.institucion == institucion
+                }.findAll()
+            }else{
+                println "Valor X"
+                solicitudesAprobadas = Solicitud.where {
+                     estado.nombre == SolicitudEstado.APROBADA &&
+                    espacio.institucion == institucion &&
+                    espacio.id == valor         
+                }.findAll()
+            }
+
+           
+            
+            
+
+
+        //println(espacio)
+        /*mapa.put("solicitudes",solicitudesAprobadas)
+        mapa.put("espacios",espacios)
+        respond Calendario.list(params), model: mapa*/
+
+        [
+            solicitudes: solicitudesAprobadas,
+            espacios: espacios
+        ]
     }
 
 }
