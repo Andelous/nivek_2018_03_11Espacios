@@ -8,6 +8,7 @@ class Solicitud {
     String horaFin
 
     String razon
+    String material
 
     static belongsTo = [usuario: Usuario, espacio: Espacio]
     SolicitudEstado estado
@@ -88,6 +89,8 @@ class Solicitud {
 
             return obj.espacio?.dias?.charAt(dia) == '1' && (val > new Date())
         }
+
+        material nullable: true, size: 1..250
     }
 
     static mapping = {

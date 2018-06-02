@@ -7,7 +7,12 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.web.servlet.ModelAndView
 import grails.plugin.springsecurity.SpringSecurityService
 
-@Secured([Rol.BENEFICIARIO_INSTITUCION, Rol.ENCARGADO_ESPACIOS])
+@Secured([
+    Rol.BENEFICIARIO_INSTITUCION,
+    Rol.ENCARGADO_ESPACIOS,
+    Rol.ADMINISTRADOR_INSTITUCION,
+    Rol.VISOR_INSTITUCION
+])
 @Transactional(readOnly = false)
 class CalendarioController {
     def springSecurityService
@@ -35,7 +40,7 @@ class CalendarioController {
             def valor = Integer.parseInt(params.espacios?.id)
 
 
-            
+
             println(params)
             println valor
 
@@ -50,13 +55,13 @@ class CalendarioController {
                 solicitudesAprobadas = Solicitud.where {
                      estado.nombre == SolicitudEstado.APROBADA &&
                     espacio.institucion == institucion &&
-                    espacio.id == valor         
+                    espacio.id == valor
                 }.findAll()
             }
 
-           
-            
-            
+
+
+
 
 
         //println(espacio)

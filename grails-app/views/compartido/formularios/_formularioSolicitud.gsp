@@ -103,6 +103,14 @@
     </div>
 </div>
 
+<div class="form-group">
+    <label>Material requerido</label>
+    <textarea name="solicitud.material"
+        class="form-control form-control-sm"
+        maxlength=250
+        rows=3>${solicitud?.material}</textarea>
+</div>
+
 <br />
 
 <script type="text/javascript">

@@ -6,14 +6,12 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.web.servlet.ModelAndView
 import grails.plugin.springsecurity.SpringSecurityService
 
-@Secured(
-    [
-        Rol.VISOR_INSTITUCION,
-        Rol.ADMINISTRADOR_INSTITUCION,
-        Rol.BENEFICIARIO_INSTITUCION,
-        Rol.ENCARGADO_ESPACIOS
-    ]
-)
+@Secured([
+    Rol.VISOR_INSTITUCION,
+    Rol.ADMINISTRADOR_INSTITUCION,
+    Rol.BENEFICIARIO_INSTITUCION,
+    Rol.ENCARGADO_ESPACIOS
+])
 @Transactional(readOnly = false)
 class ReportesController {
     def springSecurityService
@@ -60,8 +58,9 @@ class ReportesController {
             }
 
             if (nombrePersona && nombrePersona.trim() != "") {
+                def nombrePersona1 = "%" + nombrePersona + "%"
                 query = query.where {
-                    usuario.persona.nombres =~ nombrePersona /* ||
+                    usuario.persona.nombres =~ nombrePersona1 /* ||
                     usuario.persona.apellidoPaterno =~ nombrePersona ||
                     usuario.persona.apellidoMaterno =~ nombrePersona*/
                 }

@@ -35,7 +35,7 @@
                                 </div>
                             </g:form>
                         </div>
-                        
+
                     </div>
 
 
@@ -229,6 +229,9 @@
                             <strong>En espacio: </strong> ${solicitud.espacio.nombre}
                             <br />
                             <strong>Por el siguiente motivo:</strong> ${solicitud.razon}
+                            <br />
+                            <strong>Y solicitando el siguiente material:</strong>
+                            <p>${solicitud.material}</p>
                         </div>
 
                         <div class="modal-footer">
