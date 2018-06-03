@@ -146,6 +146,7 @@
                     <th scope="col">Fecha y hora</th>
                     <th scope="col">Solicitante</th>
                     <th scope="col">Raz&oacute;n</th>
+                    <th scope="col">Material</th>
                     <th scope="col">Estado</th>
                 </tr>
             </thead>
@@ -175,6 +176,7 @@
                         </td>
                         <td>${solicitud.usuario.persona}</td>
                         <td>${solicitud.razon}</td>
+                        <td>${solicitud.material}</td>
                         <td>
                             <i class="
                                 ${cancelada ? 'text-danger' : ''}

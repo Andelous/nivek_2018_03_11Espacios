@@ -117,7 +117,7 @@
               <g:each in="${solicitudes}" var="sol">
                 <tr>
                   <td>${sol.usuario.username}</td>
-                  <td>${sol.razon} ${sol.espacio.nombre} </td>
+                  <td>${sol.razon}, En el espacio: ${sol.espacio.nombre} Solicitando el siguiente material:  ${sol.material} </td>
                   <td>${sol.fecha.format('yyyy-MM-dd')+'T'+sol.horaInicio+':00.00Z'}</td>
                   <td>${sol.fecha.format('yyyy-MM-dd')+'T'+sol.horaFin+':00.00Z'}</td>
                   <td>${sol.espacio.nombre}</td>
